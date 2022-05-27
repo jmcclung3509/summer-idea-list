@@ -1,0 +1,90 @@
+body {
+    background-color: #F7697F;
+
+    width: 100vw;
+    font-family: 'Grape Nuts', cursive;
+    font-size: 16px;
+}
+
+.container {
+    padding: 20px;
+    background-image: url("elena-koycheva-y-feJOQIBao-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: 100%;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+input {
+    font-family: 'Grape Nuts', cursive;
+    font-size: 1.5rem;
+    width: 25%;
+    padding: 5px;
+    border-radius: 5px;
+
+    border: 1px solid #E94249;
+}
+
+button {
+    font-family: 'Playfair Display', cursive;
+    border: none;
+    outline: 1px solid #789A2A;
+    margin: 10px;
+    background-color: #f58999;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+select {
+    font-family: "playfair display", sans-serif;
+    background-color: #f58999;
+    padding: 5px 10px;
+    outline: 1px solid #789A2A;
+    border-radius: 5px;
+    border: none;
+}
+
+.list {
+    list-style: none;
+
+}
+
+li {
+    font-size: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+li::before {
+    content: "☀️"
+}
+
+p {
+    font-size: 1rem;
+    margin: 10px 0 0 0;
+}
+
+.checked {
+    /* text-decoration: line-through; */
+    color: #789A2A;
+    /* text-decoration-line: #789a2a; */
+}
+
+
+
+/* .unchecked {
+    text-decoration: none;
+    color: black;
+} */

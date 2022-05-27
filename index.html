@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Practice OOP </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Playfair+Display&display=swap"
+        rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="inner-wrapper">
+            <h1> Summer Ideas</h1>
+            <input id="idea-input" type="text" />
+            <button class="add-btn" onclick="add()">Add Item</button>
+            <!-- <label for="person"> Select family member:</label> -->
+            <select id="person" name="person">
+                <!-- <option value="" disabled selected>Family Member</option> -->
+                <option value="Dad">Dad</option>
+                <option value="Mom">Mom</option>
+                <option value="Jack">Jack</option>
+                <option value="Wyatt">Wyatt</option>
+                <option value="Georgia">Georgia</option>
+            </select>
+            <button class="undo" onclick="undoDelete()">Undo Deleted</button>
+            <div class="list-container">
+                <ul class="list">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
