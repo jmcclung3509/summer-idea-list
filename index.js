@@ -1,20 +1,47 @@
 const listContainer = document.querySelector(".list");
 const inputContainer = document.getElementById("idea-input")
 const selectContainer = document.getElementById("person")
+
+// Storage.prototype.SetObject = function (key, value) {
+//     this.setItem(key, JSON.stringify(value))
+// }
+// Storage.prototype.getObject = function (key) {
+//     let value = this.getItem(key)
+//     return value && JSON.parse(value)
+// }
+
 class Item {
     newItem = ""
-    constructor(item, container, person, date) {
+    constructor(item, container, person, saved) {
         this.item = item;
         this.container = container
         this.person = person
-        this.addToView()
         this.checked = false
-        this.date = date
+
+        this.addToView();
+        if (saved == false) {
+            this.storeTodo()
+        }
+    }
+
+
+
+
+
+    storeTodo() {
+        let stringPrevData = localStorage.getItem("todo")
+        let prevData = JSON.parse(stringPrevData)
+        prevData = prevData ? prevData + " |!@  " + this.item : this.item;
+        localStorage.setItem("todo", JSON.stringify(prevData))
+        console.log(prevData)
+
 
     }
     addToView() {
+
         this.newItem = document.createElement("li");
         this.newItem.innerHTML = this.item
+
         this.container.appendChild(this.newItem)
 
 
@@ -38,12 +65,12 @@ class Item {
         }
         this.newItem.appendChild(deleteBtn)
 
-        let date = document.createElement("p")
-        let d = new Date();
-        let noTimeDate = (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear()
-        d.setDate(d.getDate())
-        date.innerHTML = noTimeDate
-        this.newItem.appendChild(date)
+        // let date = document.createElement("p")
+        // let d = new Date();
+        // let noTimeDate = (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear()
+        // d.setDate(d.getDate())
+        // date.innerHTML = noTimeDate
+        // this.newItem.appendChild(date)
 
 
     }
@@ -63,14 +90,16 @@ class Item {
 }
 
 let ideaArray = []
+
 function add() {
     let ideaText = inputContainer.value
     let selectedPerson = person.value
-    console.log(selectedPerson)
-    ideaArray.push(new Item(ideaText, listContainer, selectedPerson))
-    clearInput()
-
-
+    if (!ideaText) {
+        alert("Please enter a todo item")
+    } else {
+        ideaArray.push(new Item(ideaText, listContainer, selectedPerson, false))
+        clearInput()
+    }
 }
 function clearInput() {
     inputContainer.value = ""
@@ -79,11 +108,16 @@ function undoDelete() {
     ideaArray[0].addToView()
 }
 
-console.log(ideaArray)
-console.log(Item)
+function startTheApp() {
 
-window.localStorage.setItem("item", JSON.stringify(ideaArray))
-let retrievedItem = window.localStorage.getItem("item")
-let data = JSON.parse(retrievedItem
-)
-console.log(data)
+    let selectedPerson = person.value
+    let todoData = localStorage.getItem("todo")
+    todoData = todoData.split(" |!@ ")
+    console.log(todoData)
+    // todoData = [JSON.parse(todoData)]
+    // console.log(todoData)
+    todoData.forEach((element) => {
+        new Item(element, listContainer, selectedPerson, true)
+
+    })
+}
